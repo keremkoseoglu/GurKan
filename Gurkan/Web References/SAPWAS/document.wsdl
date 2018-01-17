@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_ZGURKAN_F_V15">
+    <wsaw:UsingAddressing xmlns:wsaw="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility">
+      <wsp:All>
+        <sp:TransportBinding>
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:TripleDesRsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_ZGURKAN_F_V15">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZGURKAN_TEST">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZGURKAN_SET_SQL_DATA">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_ZGURKAN_GET_SAP_DATA">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char100">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char15">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char35">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char5">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char9">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="9" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="clnt3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal5.2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="5" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum15.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="15" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="time">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d\d:\d\d:\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZGURKAN01">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="KANID" type="tns:char5" />
+          <xsd:element name="KANTX" type="tns:char40" />
+          <xsd:element name="SALOT" type="tns:decimal5.2" />
+          <xsd:element name="SAHIT" type="tns:decimal5.2" />
+          <xsd:element name="MODEL" type="tns:char10" />
+          <xsd:element name="COMPO" type="tns:char5" />
+          <xsd:element name="BAUDR" type="xsd:int" />
+          <xsd:element name="DATAB" type="xsd:int" />
+          <xsd:element name="PARIT" type="tns:char5" />
+          <xsd:element name="STOPB" type="tns:char5" />
+          <xsd:element name="FREEM" type="tns:char1" />
+          <xsd:element name="ADRE1" type="tns:char100" />
+          <xsd:element name="ADRE2" type="tns:char100" />
+          <xsd:element name="ADRE3" type="tns:char100" />
+          <xsd:element name="ADRE4" type="tns:char100" />
+          <xsd:element name="ADRE5" type="tns:char100" />
+          <xsd:element name="ADRE6" type="tns:char100" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_S_KNA1">
+        <xsd:sequence>
+          <xsd:element name="KUNNR" type="tns:char10" />
+          <xsd:element name="NAME1_TR" type="tns:char35" />
+          <xsd:element name="NAME1_AR" type="tns:char35" />
+          <xsd:element name="ADDRE_TR" type="tns:char100" />
+          <xsd:element name="ADDRE_AR" type="tns:char100" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_S_LFA1">
+        <xsd:sequence>
+          <xsd:element name="LIFNR" type="tns:char10" />
+          <xsd:element name="NAME1_TR" type="tns:char35" />
+          <xsd:element name="NAME1_AR" type="tns:char35" />
+          <xsd:element name="VENDO" type="tns:char1" />
+          <xsd:element name="TRANS" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_S_LIKP">
+        <xsd:sequence>
+          <xsd:element name="VBELN" type="tns:char10" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="LFIMG" type="tns:quantum13.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="KUNWE" type="tns:char10" />
+          <xsd:element name="LIFSP" type="tns:char10" />
+          <xsd:element name="TRAID" type="tns:char20" />
+          <xsd:element name="LFDAT" type="tns:date" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_S_MARA">
+        <xsd:sequence>
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="MAKTX_TR" type="tns:char40" />
+          <xsd:element name="MAKTX_AR" type="tns:char40" />
+          <xsd:element name="MATKL" type="tns:char9" />
+          <xsd:element name="WGBEZ_TR" type="tns:char20" />
+          <xsd:element name="WGBEZ_AR" type="tns:char20" />
+          <xsd:element name="SELLA" type="tns:char1" />
+          <xsd:element name="LOLIC" type="tns:char1" />
+          <xsd:element name="LOLIM" type="xsd:int" />
+          <xsd:element name="LOLIA" type="tns:char1" />
+          <xsd:element name="UPLIC" type="tns:char1" />
+          <xsd:element name="UPLIM" type="xsd:int" />
+          <xsd:element name="UPLIA" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_S_TARTIM_TRANSFER">
+        <xsd:sequence>
+          <xsd:element name="KANID" type="tns:char5" />
+          <xsd:element name="TARID" type="tns:numeric10" />
+          <xsd:element name="TARTI" type="tns:char1" />
+          <xsd:element name="TRAID" type="tns:char20" />
+          <xsd:element name="BELGE" type="tns:char10" />
+          <xsd:element name="MUHID" type="tns:char10" />
+          <xsd:element name="NAME1_TR" type="tns:char40" />
+          <xsd:element name="NAME1_AR" type="tns:char40" />
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="MAKTX_TR" type="tns:char40" />
+          <xsd:element name="MAKTX_AR" type="tns:char40" />
+          <xsd:element name="LIFSP" type="tns:char10" />
+          <xsd:element name="NAKTR" type="tns:char35" />
+          <xsd:element name="NAKAR" type="tns:char35" />
+          <xsd:element name="GELAL" type="tns:char40" />
+          <xsd:element name="GITAL" type="tns:char40" />
+          <xsd:element name="STEXT" type="tns:char40" />
+          <xsd:element name="DARAA" type="tns:quantum15.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="AGIR1" type="tns:quantum15.3" />
+          <xsd:element name="ERDA1" type="tns:date" />
+          <xsd:element name="ERZE1" type="tns:time" />
+          <xsd:element name="AGIR2" type="tns:quantum15.3" />
+          <xsd:element name="ERDA2" type="tns:date" />
+          <xsd:element name="ERZE2" type="tns:time" />
+          <xsd:element name="NETAG" type="tns:quantum15.3" />
+          <xsd:element name="BELAG" type="tns:quantum15.3" />
+          <xsd:element name="LOEKZ" type="tns:char1" />
+          <xsd:element name="MUBEL" type="tns:char15" />
+          <xsd:element name="OPERA" type="tns:char40" />
+          <xsd:element name="DRIVE" type="tns:char40" />
+          <xsd:element name="BAGCO" type="xsd:int" />
+          <xsd:element name="WTEXT_TR" type="tns:char40" />
+          <xsd:element name="WTEXT_AR" type="tns:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN01_T">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN01" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_T_KNA1">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN_S_KNA1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_T_LFA1">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN_S_LFA1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_T_LIKP">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN_S_LIKP" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_T_MARA">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN_S_MARA" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZGURKAN_T_TARTIM_TRANSFER">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZGURKAN_S_TARTIM_TRANSFER" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZGURKAN_GET_SAP_DATA">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZGURKAN_GET_SAP_DATAResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_KANTAR" type="tns:ZGURKAN01_T" />
+            <xsd:element name="E_KNA1" type="tns:ZGURKAN_T_KNA1" />
+            <xsd:element name="E_LFA1" type="tns:ZGURKAN_T_LFA1" />
+            <xsd:element name="E_LIKP" type="tns:ZGURKAN_T_LIKP" />
+            <xsd:element name="E_MARA" type="tns:ZGURKAN_T_MARA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZGURKAN_SET_SQL_DATA">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_TARTIM" type="tns:ZGURKAN_T_TARTIM_TRANSFER" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZGURKAN_SET_SQL_DATAResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZGURKAN_TEST">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZGURKAN_TESTResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_TEXT_AR" type="tns:char40" />
+            <xsd:element name="E_TEXT_TR" type="tns:char40" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZGURKAN_GET_SAP_DATA">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_GET_SAP_DATA" />
+  </wsdl:message>
+  <wsdl:message name="ZGURKAN_GET_SAP_DATAResponse">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_GET_SAP_DATAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZGURKAN_SET_SQL_DATA">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_SET_SQL_DATA" />
+  </wsdl:message>
+  <wsdl:message name="ZGURKAN_SET_SQL_DATAResponse">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_SET_SQL_DATAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZGURKAN_TEST">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_TEST" />
+  </wsdl:message>
+  <wsdl:message name="ZGURKAN_TESTResponse">
+    <wsdl:part name="parameters" element="tns:ZGURKAN_TESTResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ZGURKAN_F_V15">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_ZGURKAN_F_V15" />
+    </wsp:Policy>
+    <wsdl:operation name="ZGURKAN_GET_SAP_DATA">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZGURKAN_GET_SAP_DATA" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZGURKAN_GET_SAP_DATA" />
+      <wsdl:output message="tns:ZGURKAN_GET_SAP_DATAResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZGURKAN_SET_SQL_DATA">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZGURKAN_SET_SQL_DATA" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZGURKAN_SET_SQL_DATA" />
+      <wsdl:output message="tns:ZGURKAN_SET_SQL_DATAResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ZGURKAN_TEST">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_ZGURKAN_TEST" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZGURKAN_TEST" />
+      <wsdl:output message="tns:ZGURKAN_TESTResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ZGURKAN_F_V15" type="tns:ZGURKAN_F_V15">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_ZGURKAN_F_V15" />
+    </wsp:Policy>
+    <wsa:EndpointReference xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+      <wsa:ReferenceParameters />
+    </wsa:EndpointReference>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZGURKAN_GET_SAP_DATA">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZGURKAN_SET_SQL_DATA">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZGURKAN_TEST">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZGURKAN_F_V15">
+    <wsdl:port name="ZGURKAN_F_V15" binding="tns:ZGURKAN_F_V15">
+      <soap:address location="http://saptestsrv.guris.com:8000/sap/bc/srt/rfc/sap/zgurkan_f_v15/400/zgurkan_f_v15/zgurkan_f_v15" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

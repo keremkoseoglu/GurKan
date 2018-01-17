@@ -1,0 +1,254 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{500C9519-8F81-4ADF-9357-73CCCB564889}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gurkan</RootNamespace>
+    <AssemblyName>Gurkan</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\Document.cs" />
+    <Compile Include="BusinessObjects\MaterialGroup.cs" />
+    <Compile Include="BusinessObjects\TartimDeliveryUpperBoundExceededEventArgs.cs" />
+    <Compile Include="BusinessObjects\TartimMissingFieldException.cs" />
+    <Compile Include="BusinessObjects\TartimNegativeWeightException.cs" />
+    <Compile Include="Forms\FormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEdit.Designer.cs">
+      <DependentUpon>FormEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Printouts\Printout.cs" />
+    <Compile Include="Printouts\PrintoutDelivery.cs" />
+    <Compile Include="Printouts\PrintoutWeight.cs" />
+    <Compile Include="Systems\SteelyardWeightCapturedEventArgs.cs" />
+    <Compile Include="Tech Stuff\Common.cs" />
+    <Compile Include="Forms\FormFreeWeight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFreeWeight.Designer.cs">
+      <DependentUpon>FormFreeWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\Counterparty.cs" />
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPlatformWeight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPlatformWeight.Designer.cs">
+      <DependentUpon>FormPlatformWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormReprint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReprint.Designer.cs">
+      <DependentUpon>FormReprint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWeight1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWeight1.Designer.cs">
+      <DependentUpon>FormWeight1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWeight2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWeight2.Designer.cs">
+      <DependentUpon>FormWeight2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tech Stuff\Logger.cs" />
+    <Compile Include="BusinessObjects\Material.cs" />
+    <Compile Include="BusinessObjects\PlateNumber.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormFreeWeight.resx">
+      <DependentUpon>FormFreeWeight.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPlatformWeight.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormPlatformWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReprint.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormReprint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTest.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWeight1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormWeight1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWeight2.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormWeight2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\UcPlate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UcPlate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Controls\UcWeight.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UcWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Systems\SAP.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Systems\SQL.cs" />
+    <Compile Include="Systems\Steelyard.cs" />
+    <Compile Include="Systems\Sync.cs" />
+    <Compile Include="Systems\SyncEventArgs.cs" />
+    <Compile Include="BusinessObjects\Tartim.cs" />
+    <Compile Include="BusinessObjects\TartimSalesToleranceLimitExceededException.cs" />
+    <Compile Include="BusinessObjects\TartimVehicleAlreadyPassedException.cs" />
+    <Compile Include="User Controls\UcPlate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\UcPlate.Designer.cs">
+      <DependentUpon>UcPlate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Controls\UcWeight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Controls\UcWeight.Designer.cs">
+      <DependentUpon>UcWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessObjects\Weight.cs" />
+    <Compile Include="Web References\SAPWAS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screen shot 2010-05-10 at 15.09.43.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guris_logo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outlook.jpg" />
+    <None Include="Web References\SAPWAS\document.wsdl" />
+    <None Include="Web References\SAPWAS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SAPWAS\ZGURKAN01.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SAPWAS\ZGURKAN_S_KNA1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SAPWAS\ZGURKAN_S_LFA1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SAPWAS\ZGURKAN_S_LIKP.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SAPWAS\ZGURKAN_S_MARA.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://saptestsrv.guris.com:8000/sap/bc/srt/wsdl/bndg_DF794B62D01E67F180B7D8D385A70448/wsdl11/allinone/ws_policy/document%3fsap-client=400">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SAPWAS\</RelPath>
+      <UpdateFromURL>http://saptestsrv.guris.com:8000/sap/bc/srt/wsdl/bndg_DF794B62D01E67F180B7D8D385A70448/wsdl11/allinone/ws_policy/document%3fsap-client=400</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Gurkan_SAPWAS_ZGURKAN_F_V15</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gurkan" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="SapUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">keremk</Value>
+    </Setting>
+    <Setting Name="SapPass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">batucada</Value>
+    </Setting>
+    <Setting Name="SqlConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=LH-KMIDRY3X39K3\SQLEXPRESS; Database=gurkan; Trusted_Connection=True;</Value>
+    </Setting>
+    <Setting Name="IntPeriod" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="KantarID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">KEREM</Value>
+    </Setting>
+    <Setting Name="PrintoutFontFamily" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Courier New</Value>
+    </Setting>
+    <Setting Name="PrintoutFontSize" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="PrintoutLeftMargin" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="PrintoutTopMargin" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="PrintoutLineSpacing" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="PrintoutTabSize" Type="System.Single" Scope="Application">
+      <Value Profile="(Default)">125</Value>
+    </Setting>
+    <Setting Name="PrintoutAllowTRChar" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
