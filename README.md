@@ -1,0 +1,1 @@
+This is a C# steelyard application which I wrote for a former client of mine. It can read truck weight from the serial port, and post to SAP afterwards. It can also produce printouts.
